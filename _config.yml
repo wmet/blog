@@ -96,11 +96,8 @@ theme: cafe
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-#  type: ftpsync
-#  host: 121.42.142.31
-#  user: blog
-#  pass: woaini
-#  remote: /
-#  port: 21
-#  connections: 1
-#  verbose: false
+  type: git
+  repo: https://github.com/wmet/wmet.github.io.git
+  branch: master
+  message: auto deploy
+
