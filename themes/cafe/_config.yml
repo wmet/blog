@@ -47,6 +47,7 @@ widgets:
 - social
 - post_content
 - category
+- tag               # 标签
 - tagcloud
 - recent_posts
 - archive
