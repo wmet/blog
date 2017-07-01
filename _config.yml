@@ -97,7 +97,7 @@ theme: cafe
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/wmet/wmet.github.io.git
+  repo: git@github.com:wmet/wmet.github.io.git
   branch: master
   message: auto deploy
 
