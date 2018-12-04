@@ -1,17 +1,338 @@
-<%- partial('_partial/head') %>
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>git中遇到的一些问题 | 代码客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="git">
+<meta name="keywords" content="git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git中遇到的一些问题">
+<meta property="og:url" content="https://blog.wzjs010.cc/2017/07/25/git中遇到的一些问题/index.html">
+<meta property="og:site_name" content="代码客">
+<meta property="og:description" content="git">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-12-04T08:26:41.002Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="git中遇到的一些问题">
+<meta name="twitter:description" content="git">
+  
+    <link rel="alternate" href="/atom.xml" title="代码客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+</html>
 <body>
   <div id="container">
     <div id="wrap">
-      <%- partial('_partial/header', null, {cache: !config.relative_link}) %>
-      <div class="outer">
-        <section id="main"><%- body %></section>
-          <%- partial('_partial/widget') %>
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://blog.wzjs010.cc"></form>
       </div>
-      <%- partial('_partial/footer', null, {cache: !config.relative_link}) %>
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives/">归档</a>
+        
+          <a class="main-nav-link" href="/links/">链接</a>
+        
+          <a class="main-nav-link" href="/documents/">文档</a>
+        
+          <a class="main-nav-link" href="/about/">关于</a>
+        
+      </nav>
+      
     </div>
-    <%- partial('_partial/mobile-nav', null, {cache: !config.relative_link}) %>
-    <%- partial('partials/back2top', {}) %>
-    <%- partial('_partial/after-footer') %>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">代码客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">热爱代码/自动化</a>
+        </h2>
+      
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-git中遇到的一些问题" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/07/25/git中遇到的一些问题/" class="article-date">
+  <time datetime="2017-07-24T17:52:44.000Z" itemprop="datePublished">2017-07-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/技术/">技术</a>►<a class="article-category-link" href="/categories/技术/Git/">Git</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      git中遇到的一些问题
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h3 id="git单机多用户设置"><a href="#git单机多用户设置" class="headerlink" title="git单机多用户设置"></a>git单机多用户设置</h3><p>有时候不同的项目需要用不同的账户，可以这样配置：</p>
+<ol>
+<li><p>新建user2的SSH Key<br>新建SSH key：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ cd ~/.ssh     # 切换到C:\Users\Administrator\.ssh</span><br><span class="line">ssh-keygen -t rsa -C &quot;mywork@email.com&quot;  # 新建工作的SSH key</span><br><span class="line">#设置名称为id_rsa_work</span><br><span class="line"> Enter file in which to save the key (/c/Users/Administrator/.ssh/id_rsa): id_rsa_work</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>新密钥添加到SSH agent中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh-agent bash</span><br><span class="line">ssh-add ~/.ssh/id_rsa_work</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改config文件<br>在~/.ssh目录下找到config文件，如果没有就创建：<br>touch config        # 创建config<br>然后修改如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># 该文件用于配置私钥对应的服务器</span><br><span class="line"># Default github user(first@mail.com)</span><br><span class="line">Host github.com</span><br><span class="line"> HostName github.com</span><br><span class="line"> User git</span><br><span class="line"> IdentityFile C:/Users/Administrator/.ssh/id_rsa</span><br><span class="line"></span><br><span class="line"> # second user(second@mail.com)</span><br><span class="line"> # 建一个github别名，新建的帐号使用这个别名做克隆和更新</span><br><span class="line">Host github2</span><br><span class="line"> HostName github.com</span><br><span class="line"> User git</span><br><span class="line"> IdentityFile C:/Users/Administrator/.ssh/id_rsa_work</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>打开新生成的~/.ssh/id_rsa2.pub文件，将里面的内容添加到GitHub后台。</p>
+</li>
+<li>不同项目remote设置<br> 不同的项目配置不同url<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[remote &quot;origin&quot;]</span><br><span class="line">	url = github2:username/myreps.git</span><br><span class="line">	fetch = +refs/heads/*:refs/remotes/origin/*</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="Git强制更新本地仓库"><a href="#Git强制更新本地仓库" class="headerlink" title="Git强制更新本地仓库"></a>Git强制更新本地仓库</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git fetch --all  </span><br><span class="line">git reset --hard origin/master </span><br><span class="line">#git reset --hard head</span><br><span class="line">git pull</span><br></pre></td></tr></table></figure>
+<h3 id="强覆盖用本地代码替代git仓库内容"><a href="#强覆盖用本地代码替代git仓库内容" class="headerlink" title="强覆盖用本地代码替代git仓库内容"></a>强覆盖用本地代码替代git仓库内容</h3><p>  git push -f（可解决Non-fast-forward）</p>
+<h3 id="Git一次推送多个服务器"><a href="#Git一次推送多个服务器" class="headerlink" title="Git一次推送多个服务器"></a>Git一次推送多个服务器</h3><p>编辑本地仓库的.git/config文件即可达到目的。<br>[remote “all”]<br>    url = <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:luoshupeng/commonuseppa.git<br>    url = <a href="mailto:git@gitcafe.com" target="_blank" rel="noopener">git@gitcafe.com</a>:chinesedragon/commonuseppa.git<br>    url = <a href="mailto:chinesedragon@gitcd.com" target="_blank" rel="noopener">chinesedragon@gitcd.com</a>:/commonuseppa<br>这样，使用git push all即可一键Push到多个远程仓库中。</p>
+<h3 id="git-删除本地分支和远程分支"><a href="#git-删除本地分支和远程分支" class="headerlink" title="git 删除本地分支和远程分支"></a>git 删除本地分支和远程分支</h3><p>【git 删除本地分支】<br>git branch -D br<br>【git 删除远程分支】<br>git push origin :br  (origin 后面有空格)<br>git push -f</p>
+<h3 id="git放弃对当前文件夹的所有文件的修改？"><a href="#git放弃对当前文件夹的所有文件的修改？" class="headerlink" title="git放弃对当前文件夹的所有文件的修改？"></a>git放弃对当前文件夹的所有文件的修改？</h3><p>git checkout .</p>
+<h3 id="撤销尚未提交的修改"><a href="#撤销尚未提交的修改" class="headerlink" title="撤销尚未提交的修改"></a>撤销尚未提交的修改</h3><p>git checkout head . （尚未git add ）</p>
+<h3 id="本地代码回滚和远程代码库回滚"><a href="#本地代码回滚和远程代码库回滚" class="headerlink" title="本地代码回滚和远程代码库回滚"></a>本地代码回滚和远程代码库回滚</h3><p>git代码库回滚: 指的是将代码库某分支退回到以前的某个commit id<br>【本地代码库回滚】：<br>git reset –hard commit-id :回滚到commit-id，讲commit-id之后提交的commit都去除 （已经add commit的 ）<br>git reset –hard HEAD~3：将最近3次的提交回滚<br>【远程代码库回滚】：<br>这个是重点要说的内容，过程比本地回滚要复杂<br>应用场景：自动部署系统发布后发现问题，需要回滚到某一个commit，再重新发布<br>原理：先将本地分支退回到某个commit，删除远程分支，再重新push本地分支<br>操作步骤：<br>1、git checkout the_branch<br>2、git pull<br>3、git branch the_branch_backup //备份一下这个分支当前的情况<br>4、git reset –hard the_commit_id //把the_branch本地回滚到the_commit_id<br>5、git push origin :the_branch //删除远程 the_branch<br>6、git push origin the_branch //用回滚后的本地分支重新建立远程分支<br>7、git push origin :the_branch_backup //如果前面都成功了，删除这个备份分支</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://blog.wzjs010.cc/2017/07/25/git中遇到的一些问题/" data-id="cjp9ivuno000sdkqd2n5hp3uu" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技术/">技术</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+ <script src="/jquery/jquery.min.js"></script>
+  <div id="random_posts">
+    <h2>推荐文章</h2>
+    <div class="random_posts_ul">
+      <script>
+          var random_count =4
+          var site = {BASE_URI:'/'};
+          function load_random_posts(obj) {
+              var arr=site.posts;
+              if (!obj) return;
+              // var count = $(obj).attr('data-count') || 6;
+              for (var i, tmp, n = arr.length; n; i = Math.floor(Math.random() * n), tmp = arr[--n], arr[n] = arr[i], arr[i] = tmp);
+              arr = arr.slice(0, random_count);
+              var html = '<ul>';
+            
+              for(var j=0;j<arr.length;j++){
+                var item=arr[j];
+                html += '<li><strong>' + 
+                item.date + ':&nbsp;&nbsp;<a href="' + (site.BASE_URI+item.uri) + '">' + 
+                (item.title || item.uri) + '</a></strong>';
+                if(item.excerpt){
+                  html +='<div class="post-excerpt">'+item.excerpt+'</div>';
+                }
+                html +='</li>';
+                
+              }
+              $(obj).html(html + '</ul>');
+          }
+          $('.random_posts_ul').each(function () {
+              var c = this;
+              if (!site.posts || !site.posts.length){
+                  $.getJSON(site.BASE_URI + 'js/posts.js',function(json){site.posts = json;load_random_posts(c)});
+              } 
+               else{
+                load_random_posts(c);
+              }
+          });
+      </script>
+    </div>
+  </div>
+
+    
+<nav id="article-nav">
+  
+    <a href="/2017/07/27/程序员的道路/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          程序员的道路
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/07/25/最近感想/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">最近感想</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+ 
+     
+  <div class="comments" id="comments">
+    
+     
+       
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+       
+      
+      
+  </div>
+ 
+  
+
+</section>
+           
+    <aside id="sidebar">
+  
+    
+
+  
+    
+    <div class="widget-wrap">
+    
+      <div class="widget" id="toc-widget-fixed">
+      
+        <strong class="toc-title">文章目录</strong>
+        <div class="toc-widget-list">
+              <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#git单机多用户设置"><span class="toc-number">1.</span> <span class="toc-text">git单机多用户设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Git强制更新本地仓库"><span class="toc-number">2.</span> <span class="toc-text">Git强制更新本地仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#强覆盖用本地代码替代git仓库内容"><span class="toc-number">3.</span> <span class="toc-text">强覆盖用本地代码替代git仓库内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Git一次推送多个服务器"><span class="toc-number">4.</span> <span class="toc-text">Git一次推送多个服务器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#git-删除本地分支和远程分支"><span class="toc-number">5.</span> <span class="toc-text">git 删除本地分支和远程分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#git放弃对当前文件夹的所有文件的修改？"><span class="toc-number">6.</span> <span class="toc-text">git放弃对当前文件夹的所有文件的修改？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#撤销尚未提交的修改"><span class="toc-number">7.</span> <span class="toc-text">撤销尚未提交的修改</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#本地代码回滚和远程代码库回滚"><span class="toc-number">8.</span> <span class="toc-text">本地代码回滚和远程代码库回滚</span></a></li></ol>
+          </div>
+      </div>
+    </div>
+
+  
+    
+
+  
+    
+  
+    
+  
+    
+
+  
+    
+  
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-left">
+      &copy; 2014 - 2018 Milk&nbsp;|&nbsp;
+      主题 <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+    </div>
+     <div id="footer-right">
+      联系方式&nbsp;|&nbsp;wme2018@gmail.com
+    </div>
+  </div>
+</footer>
+ <script src="/jquery/jquery.min.js"></script>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives/" class="mobile-nav-link">归档</a>
+  
+    <a href="/links/" class="mobile-nav-link">链接</a>
+  
+    <a href="/documents/" class="mobile-nav-link">文档</a>
+  
+    <a href="/about/" class="mobile-nav-link">关于</a>
+  
+</nav>
+    <img class="back-to-top-btn" src="/images/fly-to-top.png">
+<script>
+// Elevator script included on the page, already.
+window.onload = function() {
+  var elevator = new Elevator({
+    selector:'.back-to-top-btn',
+    element: document.querySelector('.back-to-top-btn'),
+    duration: 1000 // milliseconds
+  });
+}
+</script>
+      
+
+  
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "d44452625d8d4a92a01487ed45870d68",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
+    
+
+  
+
+
+
+
+
+
+
+<!-- author:forvoid begin -->
+<!-- author:forvoid begin -->
+
+<!-- author:forvoid end -->
+
+<!-- author:forvoid end -->
+
+
+
+ <script src="/js/is.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/elevator.js"></script>
   </div>
 </body>
 </html>
