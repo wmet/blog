@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.wzjs010.cc/"/>
-  <updated>2018-12-04T10:16:25.906Z</updated>
+  <updated>2018-12-05T08:41:15.219Z</updated>
   <id>https://blog.wzjs010.cc/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>git简单使用教程</title>
+    <link href="https://blog.wzjs010.cc/2018/12/05/git%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/"/>
+    <id>https://blog.wzjs010.cc/2018/12/05/git简单使用教程/</id>
+    <published>2018-12-05T08:35:26.000Z</published>
+    <updated>2018-12-05T08:41:15.219Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="简易的命令行入门教程"><a href="#简易的命令行入门教程" class="headerlink" title="简易的命令行入门教程:"></a>简易的命令行入门教程:</h3><p>Git 全局设置:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;I宝宝&quot;</span><br><span class="line">git config --global user.email &quot;wy@vip.qq.com&quot;</span><br></pre></td></tr></table></figure></p><p>创建 git 仓库:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mkdir mdmkq</span><br><span class="line">cd mdmkq</span><br><span class="line">git init</span><br><span class="line">touch README.md</span><br><span class="line">git add README.md</span><br><span class="line">git commit -m &quot;first commit&quot;</span><br><span class="line">git remote add origin git@gitee.com:okokgo/mdmkq.git</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure></p><p>已有项目?<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd existing_git_repo</span><br><span class="line">git remote add origin git@gitee.com:okokgo/mdmkq.git</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;简易的命令行入门教程&quot;&gt;&lt;a href=&quot;#简易的命令行入门教程&quot; class=&quot;headerlink&quot; title=&quot;简易的命令行入门教程:&quot;&gt;&lt;/a&gt;简易的命令行入门教程:&lt;/h3&gt;&lt;p&gt;Git 全局设置:&lt;br&gt;&lt;figure class=&quot;highligh
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="https://blog.wzjs010.cc/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+      <category term="git" scheme="https://blog.wzjs010.cc/categories/%E6%8A%80%E6%9C%AF/git/"/>
+    
+    
+      <category term="git" scheme="https://blog.wzjs010.cc/tags/git/"/>
+    
+  </entry>
   
   <entry>
     <title>常用软件总结2</title>
